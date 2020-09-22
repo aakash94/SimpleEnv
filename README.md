@@ -10,7 +10,7 @@ State has 4 dimensions.
 Action has 2 dimension.
 Each episode will run for 1024 time steps.
 
-####all_ones
+#### all_ones
 Can the agent learn to output(action) all ones irrespective of the input(state).  
 
 **State :**
@@ -19,7 +19,7 @@ At every step new values are set randomly.
 
 **Reward :**
 Reward is the negative MSE between the action and an array of 1s.
-####copy_cat
+#### copy_cat
 Can the agent output(action) all ones or all zeros depending on the input(state) 
 
 **State :**
