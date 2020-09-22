@@ -1,37 +1,55 @@
-## Welcome to GitHub Pages
+# SimpleEnv
+Simple OpenAI gym compatible environments to help develop DRL agents.
+Standard gym environments don't provide enough feedback for algorithm development and debugging.
+Goal here is to have environments that help develop bug free agents and algorithms.
+At current state the project is very basic. Open to suggestions. Feel free to contribute. 
 
-You can use the [editor on GitHub](https://github.com/aakash94/SimpleEnv/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### What does it have?
+Simple gym environment, with continuous state and action space.
+State has 4 dimensions.
+Action has 2 dimension.
+Each episode will run for 1024 time steps.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+#### all_ones
+Can the agent learn to output(action) all ones irrespective of the input(state).  
 
-### Markdown
+**State :**
+State is a numpy array with random values between 0 and 1. 
+At every step new values are set randomly.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+**Reward :**
+Reward is the negative MSE between the action and an array of 1s.
+#### copy_cat
+Can the agent output(action) all ones or all zeros depending on the input(state) 
 
-```markdown
-Syntax highlighted code block
+**State :**
+State is either an array of all ones or all zeros, chosen randomly at each time step.
 
-# Header 1
-## Header 2
-### Header 3
+**Reward :**
+Reward is the negative MSE between the action and an array of 1s.
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
+### How to setup ?
+* Clone the repo
+* Go to `SimpleEnv` directory
+* run `pip install -e .`
+\
+This will install `simple-env`
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+### How to use?
 ```
+import gym
+import simple_env
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+env_all_ones = gym.make('all_ones-v0')
+env_copy_cat = gym.make('copy_cat-v0')
+``` 
+The environments are good for use now. 
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/aakash94/SimpleEnv/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### What's next?
+* Making it available via pypi
+* Adding more simple environments for different types of agents
+* Maybe, add testcases for some standard functions and operations
+\
+(Project is not in active development right now)
