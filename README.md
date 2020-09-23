@@ -18,7 +18,7 @@ State is a numpy array with random values between 0 and 1.
 At every step new values are set randomly.
 
 **Reward :**
-Reward is the negative MSE between the action and an array of 1s.
+Reward is the negative l1 loss between the action and an array of 1s.
 #### copy_cat
 Can the agent output(action) all ones or all zeros depending on the input(state) 
 
