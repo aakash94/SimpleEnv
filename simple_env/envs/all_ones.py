@@ -36,16 +36,16 @@ class AllOnes(gym.Env):
         if self.step_count >= self.timestep_limit:
             self.done = True
 
-        self.state = [np.random.rand(self.state_size)]
+        self.state = np.random.rand(self.state_size)
 
-        mse = ((self.reference - action) ** 2).mean()
-        reward = -mse
+        l1_loss = (np.abs((self.reference - action))).mean()
+        reward = -l1_loss
 
         return self.state, reward, self.done, {}
 
     def reset(self):
         self.step_count = 0
-        self.state = [np.random.rand(self.state_size)]
+        self.state = np.random.rand(self.state_size)
         self.done = False
         return self.state
 
@@ -66,7 +66,7 @@ if __name__ == '__main__':
     eao = AllOnes()
     s = eao.reset()
     eao.render()
-    a = np.array([1.0,1.0])
+    a = np.array([1.0,9.0])
     s_, r, d, _ = eao.step(a)
     print(r)
     eao.render()
